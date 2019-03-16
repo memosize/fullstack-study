@@ -20,7 +20,6 @@ const store = createStore(reducers,compose(
                <Switch>
                    <Route path='/login' component={Auth}></Route>
                    <Route path='/dashboard' component={DashBoard}></Route>
-                   <Redirect to='/dashboard'></Redirect>
                </Switch> 
             </Router>
          

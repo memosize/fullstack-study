@@ -11,25 +11,26 @@ import {loginout,login} from './Auth.redux'
 
   render() {
     console.log('this.props', this.props)
-    const { isAuth } = this.props
+    const { isAuth ,match} = this.props
     const redirectToLogin = <Redirect to='./Login'></Redirect>
-   
     const app =  (
       <div>
+        <h1>独立团</h1>
+        {isAuth?<button onClick={this.props.loginout}>注销</button>:null}
         <ul>
           <li>
-            <Link to='/dashboard' exact='true'>一营</Link>
+            <Link to={`${match.url}/`}>一营</Link>
           </li>
           <li>
-            <Link to='/dashboard/erying'>二营</Link>
+            <Link to={`${match.url}/erying`}>二营</Link>
           </li>
           <li>
-            <Link to='/dashboard/qibinglian'>骑兵连</Link>
+            <Link to={`${match.url}/qibianlian`}>骑兵连</Link>
           </li>
         </ul>
-        <Route path='/dashboard/' exact={true} component={App}></Route>
-        <Route path='/dashboard/erying' component={Erying}></Route>
-        <Route path='/dashboard/qibinglian' component={Qibinglian}></Route>
+        <Route path={`${match.url}`} exact={true} component={App}></Route>
+        <Route path={`${match.url}erying`} component={Erying}></Route>
+        <Route path={`${match.url}qibinglian`} component={Qibinglian}></Route>
 
 
       </div>
@@ -55,7 +56,7 @@ function Qibinglian(){
 
 const mapStatetoProps = (state)=>{
   console.log('state', state) 
-  return {isAuth:state.auth.isAuth,loginout:state}
+  return {isAuth:state.auth.isAuth}
 }
 const actionCreators = {login,loginout}
 DashBoard = connect(mapStatetoProps,actionCreators)(DashBoard)
