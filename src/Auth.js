@@ -2,6 +2,16 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {login,getUserData} from './Auth.redux'
 import {Redirect} from 'react-router-dom'
+// const mapStatetoProps = (state)=>{
+//   console.log('state', state) 
+//   return {isAuth:state.auth.isAuth,user:state.auth.user,age:state.auth.age}
+// }
+// const actionCreators = {login,getUserData}
+// Auth = connect(mapStatetoProps,actionCreators)(Auth)
+@connect(
+  state=>({isAuth:state.auth.isAuth,user:state.auth.user,age:state.auth.age}),
+  {login,getUserData}
+)
  class Auth extends Component {
   constructor(props){
     super(props)
@@ -24,11 +34,5 @@ import {Redirect} from 'react-router-dom'
   }
 }
 
-const mapStatetoProps = (state)=>{
-  console.log('state', state) 
-  return {isAuth:state.auth.isAuth,user:state.auth.user,age:state.auth.age}
-}
-const actionCreators = {login,getUserData}
-Auth = connect(mapStatetoProps,actionCreators)(Auth)
 export default Auth
 

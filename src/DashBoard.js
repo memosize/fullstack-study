@@ -4,6 +4,10 @@ import App from './App'
 import { connect } from 'react-redux';
 import {loginout,login} from './Auth.redux'
 
+@connect(
+  state=>({isAuth:state.auth.isAuth}),
+  {login,loginout}
+)
  class DashBoard extends Component {
     constructor(props){
         super(props)
@@ -54,10 +58,4 @@ function Qibinglian(){
   )
 }
 
-const mapStatetoProps = (state)=>{
-  console.log('state', state) 
-  return {isAuth:state.auth.isAuth}
-}
-const actionCreators = {login,loginout}
-DashBoard = connect(mapStatetoProps,actionCreators)(DashBoard)
 export default DashBoard
