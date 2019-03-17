@@ -4,10 +4,12 @@ import * as serviceWorker from './serviceWorker';
 import thunk from 'redux-thunk'
 import {createStore,applyMiddleware,compose} from 'redux'
 import {Provider} from 'react-redux'
-import {BrowserRouter as Router,Route,Switch,Redirect} from 'react-router-dom'
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 import Auth from './Auth'
 import DashBoard from './DashBoard'
 import reducers  from './reducer'
+import './config/config'
+import 'antd-mobile/dist/antd-mobile.css';  // or 'antd-mobile/dist/antd-mobile.less'
 
 const store = createStore(reducers,compose(
     applyMiddleware(thunk),
