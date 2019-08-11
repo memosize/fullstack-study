@@ -48,6 +48,7 @@ Router.post("/register", function(req, res) {
       if (e) {
         return res.json({ code: 1, msg: "后端出错了" });
       }
+      return res.json({code:0})
     });
   });
 });
